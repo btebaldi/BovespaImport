@@ -51,11 +51,11 @@
     <Folder Include="BusinessClass\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\01. ConfigCommon\ConfigCommon.csproj">
+    <ProjectReference Include="..\..\Common\ConfigCommon\ConfigCommon.csproj">
       <Project>{02642c7d-e49c-4f71-a88b-65ba5026885e}</Project>
       <Name>ConfigCommon</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\02. DataCommon\DataCommon.csproj">
+    <ProjectReference Include="..\..\Common\DataCommon\DataCommon.csproj">
       <Project>{6fa2d86b-da87-486f-83bf-62b4474c1f4c}</Project>
       <Name>DataCommon</Name>
     </ProjectReference>
