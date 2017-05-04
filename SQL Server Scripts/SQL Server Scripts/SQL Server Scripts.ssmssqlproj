@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="SQL Server Scripts">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:btebaldi">
+          <Created>2017-05-02T11:49:21.2167284-03:00</Created>
+          <Type>SQL</Type>
+          <Server>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</Server>
+          <UserName>btebaldi</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="procClearImpTable.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <FullPath>procClearImpTable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="procGetImpProcess.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <FullPath>procGetImpProcess.sql</FullPath>
+        </FileNode>
+        <FileNode Name="procGetKeyValue.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <FullPath>procGetKeyValue.sql</FullPath>
+        </FileNode>
+        <FileNode Name="procGetProcessQueue.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <FullPath>procGetProcessQueue.sql</FullPath>
+        </FileNode>
+        <FileNode Name="procGetTransformations.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <FullPath>procGetTransformations.sql</FullPath>
+        </FileNode>
+        <FileNode Name="procGravaFeedInfo.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <FullPath>procGravaFeedInfo.sql</FullPath>
+        </FileNode>
+        <FileNode Name="procGravaFeedMapping.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <FullPath>procGravaFeedMapping.sql</FullPath>
+        </FileNode>
+        <FileNode Name="procGravaFeedTransformation.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <FullPath>procGravaFeedTransformation.sql</FullPath>
+        </FileNode>
+        <FileNode Name="procImportIMP.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <FullPath>procImportIMP.sql</FullPath>
+        </FileNode>
+        <FileNode Name="procInsertLog.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <FullPath>procInsertLog.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TB_ATIVO.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <FullPath>TB_ATIVO.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TB_FEED_KEY_VALUE.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <FullPath>TB_FEED_KEY_VALUE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TB_FEED_MAPPING.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <FullPath>TB_FEED_MAPPING.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TB_FeedTransformation.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <FullPath>TB_FeedTransformation.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TB_HISTORICO_COTACAO.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <FullPath>TB_HISTORICO_COTACAO.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TB_IMP_HISTORICO_COTACAO.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <FullPath>TB_IMP_HISTORICO_COTACAO.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TB_ImpProcess.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <FullPath>TB_ImpProcess.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TB_LOG.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <FullPath>TB_LOG.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TB_ProcessQueue.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <FullPath>TB_ProcessQueue.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>
