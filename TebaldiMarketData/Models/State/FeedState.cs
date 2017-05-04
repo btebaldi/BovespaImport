@@ -12,12 +12,7 @@ namespace Tebaldi.MarketData.Models.State
         public int ID { get; set; }
         public string Name { get; set; }
         public FeedTypeEnum Type { get; set; }
-        public Uri Uri { get; set; }
         public bool Active { get; set; }
-        public string FileMask { get; set; }
-
-        public List<FeedMappingState> ColumnMapping { get; set; }
-        public List<FeedTransformationState> Transformations { get; set; }
 
         readonly SchemaStruct _schema;
         public SchemaStruct Schema { get { return _schema; } }
@@ -28,28 +23,14 @@ namespace Tebaldi.MarketData.Models.State
         /// </summary>
         public FeedState()
         {
-            ColumnMapping = new List<FeedMappingState>();
-            Transformations = new List<FeedTransformationState>();
-
             _schema = new SchemaStruct();
-            _schema.ObjectName = "TB_FEED";
+            _schema.ObjectName = "TB_Feed";
             _schema.FeedId = "FeedId";
             _schema.Name = "Name";
             _schema.FeedType = "FeedType";
-            _schema.Origem = "Origem";
-            _schema.FileMask = "FileMask";
             _schema.Active = "Active";
         }
         #endregion
-
-        public string GetFileName(DateTime date)
-        {
-            string ret = FileMask;
-            Match dateTimeMask = Regex.Match(ret, @"(?<=\[DateTime:).*(?=\])");
-
-            ret = System.Text.RegularExpressions.Regex.Replace(ret, @"\[DateTime:.*\]", date.ToString(dateTimeMask.Value));
-            return ret;
-        }
 
         #region "Schema Structure to return Object and Column Names"
         [Serializable]
@@ -59,8 +40,6 @@ namespace Tebaldi.MarketData.Models.State
             public string FeedId;
             public string Name;
             public string FeedType;
-            public string Origem;
-            public string FileMask;
             public string Active;
         }
         #endregion

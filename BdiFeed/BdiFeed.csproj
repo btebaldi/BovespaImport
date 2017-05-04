@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BdiFeed</RootNamespace>
     <AssemblyName>BdiFeed</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,9 +41,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Config.cs" />
+    <Compile Include="Exceptions\FileNotDownloadedException.cs" />
+    <Compile Include="Exceptions\TipoResgistroInvalidoException.cs" />
+    <Compile Include="Exceptions\NotImplementedException.cs" />
+    <Compile Include="Exceptions\FileNotFoundException.cs" />
+    <Compile Include="Exceptions\BdiFeedException.cs" />
+    <Compile Include="DataClass\BdiDC.cs" />
+    <Compile Include="DataClass\State\BdiFileState.cs" />
+    <Compile Include="DataClass\State\BdiFile\BdrState.cs" />
+    <Compile Include="DataClass\State\BdiFile\CotacaoState.cs" />
+    <Compile Include="DataClass\State\BdiFile\HeaderState.cs" />
+    <Compile Include="DataClass\State\BdiFile\IndiceState.cs" />
+    <Compile Include="DataClass\State\BdiFile\MaiorOscilacaoIbovState.cs" />
+    <Compile Include="DataClass\State\BdiFile\MaiorOscilacaoVistaState.cs" />
+    <Compile Include="DataClass\State\BdiFile\MaisNegociadasState.cs" />
+    <Compile Include="DataClass\State\BdiFile\MaisNegociadasVistaState.cs" />
+    <Compile Include="DataClass\State\BdiFile\ResumoBdiState.cs" />
+    <Compile Include="DataClass\State\BdiFile\ResumoDiarioIopvState.cs" />
+    <Compile Include="DataClass\State\BdiFile\TrailerState.cs" />
+    <Compile Include="Logic\BdiHandler.cs" />
+    <Compile Include="Logic\Config.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MobralWorker\MobralWorker.csproj">
+      <Project>{a33521f2-84f3-4483-9f2c-394ebb0de02a}</Project>
+      <Name>MobralWorker</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
