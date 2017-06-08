@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedImport", "BovespaConsole\FeedImport.csproj", "{D3FE2621-CF1C-4C43-BD12-DB68047AD4B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigCommon", "..\Common\ConfigCommon\ConfigCommon.csproj", "{02642C7D-E49C-4F71-A88B-65BA5026885E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataCommon", "..\Common\DataCommon\DataCommon.csproj", "{6FA2D86B-DA87-486F-83BF-62B4474C1F4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BovespaData", "BovespaData\BovespaData.csproj", "{5C1C6AC5-2FA1-45D5-935F-B22B7F46CEC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TebaldiMarketData", "TebaldiMarketData\TebaldiMarketData.csproj", "{2F83B471-BB0C-479E-AFCD-13E67AABA874}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsvCommom", "..\Common\CsvCommom\CsvCommom\CsvCommom.csproj", "{87537AE4-638B-41CE-87C3-E3340079A656}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BdiFeed", "BdiFeed\BdiFeed.csproj", "{4AC43B52-6822-40A7-BEF1-4FA6400912E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3FE2621-CF1C-4C43-BD12-DB68047AD4B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3FE2621-CF1C-4C43-BD12-DB68047AD4B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3FE2621-CF1C-4C43-BD12-DB68047AD4B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3FE2621-CF1C-4C43-BD12-DB68047AD4B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02642C7D-E49C-4F71-A88B-65BA5026885E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02642C7D-E49C-4F71-A88B-65BA5026885E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02642C7D-E49C-4F71-A88B-65BA5026885E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02642C7D-E49C-4F71-A88B-65BA5026885E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FA2D86B-DA87-486F-83BF-62B4474C1F4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FA2D86B-DA87-486F-83BF-62B4474C1F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FA2D86B-DA87-486F-83BF-62B4474C1F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FA2D86B-DA87-486F-83BF-62B4474C1F4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C1C6AC5-2FA1-45D5-935F-B22B7F46CEC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C1C6AC5-2FA1-45D5-935F-B22B7F46CEC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C1C6AC5-2FA1-45D5-935F-B22B7F46CEC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C1C6AC5-2FA1-45D5-935F-B22B7F46CEC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F83B471-BB0C-479E-AFCD-13E67AABA874}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F83B471-BB0C-479E-AFCD-13E67AABA874}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F83B471-BB0C-479E-AFCD-13E67AABA874}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F83B471-BB0C-479E-AFCD-13E67AABA874}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87537AE4-638B-41CE-87C3-E3340079A656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87537AE4-638B-41CE-87C3-E3340079A656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87537AE4-638B-41CE-87C3-E3340079A656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87537AE4-638B-41CE-87C3-E3340079A656}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AC43B52-6822-40A7-BEF1-4FA6400912E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AC43B52-6822-40A7-BEF1-4FA6400912E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AC43B52-6822-40A7-BEF1-4FA6400912E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AC43B52-6822-40A7-BEF1-4FA6400912E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
