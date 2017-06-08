@@ -32,24 +32,20 @@ BEGIN
 		[NodeId]			int not null unique,
 		[FeedId]			int not null,
 		[Name]				nvarchar(100) not null,
-		[FeedType]			nvarchar(100) not null,
-		[Origem]			nvarchar(2000) not null,
-		[FileMask]			nvarchar(150) not null,
+		[FeedTypeId]		int not null,
 		[Active]			bit not null
 		)
 
 
-	INSERT INTO @TB_IMP_FEED ([NodeId], [FeedId], [Name], [FeedType], [Origem], [FileMask], [Active])
-	SELECT [NodeId], [FeedId], [Name], [FeedType], [Origem], [FileMask], [Active]
+	INSERT INTO @TB_IMP_FEED ([NodeId], [FeedId], [Name], [FeedTypeId], [Active])
+	SELECT [NodeId], [FeedId], [Name], [FeedTypeId], [Active]
 	FROM 
 		OPENXML (@idoc, '/ROOT/FeedInfo', 1)
 			with (
 				[NodeId]	int,
 				[FeedId]	int,
 				[Name]		nvarchar(100),
-				[FeedType]	nvarchar(100),
-				[Origem]	nvarchar(2000),
-				[FileMask]	nvarchar(150),
+				[FeedTypeId]	int,
 				[Active]	bit
 				) x 
 
@@ -59,26 +55,42 @@ BEGIN
 	UPDATE F SET
 		/* CAMPOS DESLIGADOS. SAO ATUALIZADOS APENAS NO CADASTRO MANUAL */
 		F.[Name] = ImF.[Name],
-		F.[FeedType] = ImF.[FeedType],
-		F.[Origem] = ImF.[Origem],
-		F.[FileMask] = ImF.[FileMask],
+		F.[FeedTypeId] = ImF.[FeedTypeId],
 		F.[Active] = ImF.[Active]
 	FROM
 		@TB_IMP_FEED ImF
 		Inner Join TB_FEED F on F.FeedId = ImF.FeedId
 
 -- Adiciono novos mapeamentos que tem Id=0
-	INSERT INTO TB_FEED ([Name], [FeedType], [Origem], [FileMask], [Active])
+
+	DECLARE @WorkedIds TABLE (newFeedId INT)
+
+	insert into @WorkedIds select FeedId from @TB_IMP_FEED where FeedId<>0
+
+
+	INSERT INTO TB_FEED ([Name], [FeedTypeId], [Active])
+	OUTPUT INSERTED.FeedId INTO @WorkedIds
 	SELECT 
 		[Name],
-		[FeedType],
-		[Origem],
-		[FileMask],
+		[FeedTypeId],
 		[Active]
 	FROM
 		@TB_IMP_FEED 
 	WHERE
 		[FeedId] = 0
+
+
+ -- Adiciono eventuais Valores de Chaves que tem de ser acrescentados
+	insert into TB_FeedKeyValue (FeedId, Chave, Valor, FeedSpecific)
+	SELECT F.FeedId, FTD.Chave, 'SomeValue', 1 
+	from	TB_FEED F
+			INNER JOIN @WorkedIds WF on F.FeedId = WF.newFeedId
+			INNER JOIN TB_FeedType FT on F.FeedTypeId = FT.FeedTypeId
+			INNER JOIN TB_FeedTypeDefaultKeys FTD on FTD.FeedTypeId = F.FeedTypeId 
+			LEFT JOIN TB_FeedKeyValue KV on F.FeedId = KV.FeedID and KV.Chave = FTD.Chave
+	WHERE 
+			KV.Chave is null
+			
 END
 
 

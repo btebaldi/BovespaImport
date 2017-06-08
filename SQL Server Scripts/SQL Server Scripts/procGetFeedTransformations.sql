@@ -1,3 +1,11 @@
+USE [TebaldiMarketData]
+GO
+
+/****** Object:  StoredProcedure [dbo].[procGravaFeedMapping]    Script Date: 2017-04-27 5:28:04 PM ******/
+DROP PROCEDURE [dbo].[procGetFeedTransformations]
+GO
+
+
 -- ================================================
 -- Template generated from Template Explorer using:
 -- Create Procedure (New Menu).SQL
@@ -18,7 +26,7 @@ GO
 -- Create date: 2017-05-03
 -- Description:	Busca Transformations
 -- =============================================
-CREATE PROCEDURE procGetTransformations 
+CREATE PROCEDURE procGetFeedTransformations 
 	-- Add the parameters for the stored procedure here
 	@FeedId int
 AS

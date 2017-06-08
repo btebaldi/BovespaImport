@@ -20,13 +20,11 @@ CREATE TABLE [dbo].[TB_FeedTransformation](
 	[OriginalColumn] [nvarchar](50) NOT NULL, 
 	[NewValue] [nvarchar](50) NOT NULL, 
 	[NewColumn] [nvarchar](50) NOT NULL, 
-	CONSTRAINT [PK_feed] PRIMARY KEY CLUSTERED 
+	CONSTRAINT [PK_Transformation] PRIMARY KEY CLUSTERED 
 (
 	[TransformationId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-	-- CONSTRAINT [FK_FeedId] FOREIGN KEY([FeedId]) REFERENCES [dbo].[TB_FEED] ([FeedId]) ON DELETE CASCADE
-
-
 GO
+ALTER TABLE TB_FeedTransformation ADD CONSTRAINT FK_Trans_FeedId FOREIGN KEY (FeedId) REFERENCES TB_Feed(FeedId);

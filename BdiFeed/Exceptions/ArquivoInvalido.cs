@@ -4,17 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tebaldi.MarketData
+namespace Tebaldi.BdiFeed.Exceptions
 {
-    [Serializable]
-    public class TebaldiMarketDataException : ApplicationException
+    class ArquivoInvalido : ApplicationException
     {
-        public TebaldiMarketDataException()
-            : base()
+        public ArquivoInvalido()
+                : base()
         { }
 
-        public TebaldiMarketDataException(string msg)
-            : base(msg)
+        public ArquivoInvalido(string msg)
+                : base(msg)
         { }
 
         public string MessageForWebDisplay
@@ -22,4 +21,5 @@ namespace Tebaldi.MarketData
             get { return base.Message.Replace(Environment.NewLine, "<br>"); }
         }
     }
+
 }

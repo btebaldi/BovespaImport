@@ -15,6 +15,8 @@ namespace Tebaldi.FeedImport
 
         static void Main(string[] args)
         {
+            logger.Info("Inicio de processo");
+
             // Inicializo o handler dos processos
             Tebaldi.FeedImport.Business.ProcessHandler handler = new Business.ProcessHandler();
 
@@ -25,6 +27,8 @@ namespace Tebaldi.FeedImport
             {
                 FeedImport.Business.GenericProcess impPorcess = handler.LoadImportProcess(item);
 
+                item.DataExecucao = DateTime.Now;
+                item.Executado = true;
                 try
                 {
                     // Carego as configuracoes de importacao
@@ -40,6 +44,8 @@ namespace Tebaldi.FeedImport
 
                     handler.WriteDataToDatabase(impPorcess.GetData());
 
+                    item.Success = true;
+
                     //if (handler.RescheduleOnSuccess)
                     //{
                     //    handler.Reschedule(i);
@@ -48,9 +54,19 @@ namespace Tebaldi.FeedImport
                 }
                 catch (Exceptions.DownloadError404Exception ex)
                 {
+                    item.Success = false;
                     logger.Warn(ex.Message);
                 }
+                catch (Exception ex)
+                {
+                    item.Success = false;
+                    logger.Error(ex.Message);
+                }
             }
+            handler.Save(lstQueue);
+
+            logger.Info("Fim de processo");
+            log4net.LogManager.Flush(15000);
         }
     }
 }

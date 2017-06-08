@@ -78,7 +78,7 @@
       <Project>{4ac43b52-6822-40a7-bef1-4fa6400912e6}</Project>
       <Name>BdiFeed</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TebaldiMarketData\TebaldiMarketData.csproj">
+    <ProjectReference Include="..\..\TebaldiMarketData\TebaldiMarketData.csproj">
       <Project>{2f83b471-bb0c-479e-afcd-13e67aaba874}</Project>
       <Name>TebaldiMarketData</Name>
     </ProjectReference>
