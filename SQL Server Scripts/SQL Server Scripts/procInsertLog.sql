@@ -24,7 +24,7 @@ CREATE PROCEDURE [dbo].[procInsertLog]
 	@log_level nvarchar(50),
 	@logger nvarchar(255),
 	@log_message nvarchar(4000),
-	@exception nvarchar(2000)
+	@exception nvarchar(2000) = ''
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from

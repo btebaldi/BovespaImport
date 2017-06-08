@@ -97,7 +97,7 @@ namespace Tebaldi.BdiFeed
         {
             if (bdiFile.Header.DataDoPregao != bdiConfig.RequestedDate)
             {
-                throw new Exceptions.BdiFeedException("Data do arquivo nao confere com a data requisitada.");
+                throw new Exceptions.ArquivoInvalido("Data do arquivo nao confere com a data requisitada.");
             }
         }
     }

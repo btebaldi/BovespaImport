@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigCommon", "..\Common\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataCommon", "..\Common\DataCommon\DataCommon.csproj", "{6FA2D86B-DA87-486F-83BF-62B4474C1F4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TebaldiMarketData", "TebaldiMarketData\TebaldiMarketData.csproj", "{2F83B471-BB0C-479E-AFCD-13E67AABA874}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TebaldiMarketData", "..\TebaldiMarketData\TebaldiMarketData.csproj", "{2F83B471-BB0C-479E-AFCD-13E67AABA874}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BdiFeed", "BdiFeed\BdiFeed.csproj", "{4AC43B52-6822-40A7-BEF1-4FA6400912E6}"
 EndProject

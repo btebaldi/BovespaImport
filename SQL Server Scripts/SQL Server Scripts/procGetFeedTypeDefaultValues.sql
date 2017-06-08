@@ -14,13 +14,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
--- Author:		Bruno
--- Create date: 2017-05-03
--- Description:	Busca Processo Importacao
+-- Author:		Bruno Tebaldi
+-- Create date: 2017-06-08
+-- Description:	
 -- =============================================
-CREATE PROCEDURE procGetFeed
-	-- Add the parameters for the stored procedure here
-	@FeedId int = null
+CREATE PROCEDURE procGetFeedTypeDefaultValues
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -28,6 +26,14 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT FeedId, Name, FeedType, Active from TB_Feed where (FeedId = @FeedId or @FeedId is null)
+	select
+		FT.FeedTypeId,
+		FT.EnumCode,
+		FT.Descricao,
+		DV.DefaultKeyId,
+		DV.FeedTypeId,
+		DV.Chave
+	from TB_FeedType FT
+	Inner Join TB_FeedTypeDefaultKeys DV on FT.FeedTypeId = DV.FeedTypeId 
 END
 GO

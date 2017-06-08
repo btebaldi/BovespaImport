@@ -1,11 +1,11 @@
 USE [TebaldiMarketData]
 GO
 
-/****** Object:  StoredProcedure [dbo].[procImportIMP]    Script Date: 2017-04-27 5:28:22 PM ******/
+/****** Object:  StoredProcedure [dbo].[procImportIMP]    Script Date: 2017-06-06 12:13:32 PM ******/
 DROP PROCEDURE [dbo].[procImportIMP]
 GO
 
-/****** Object:  StoredProcedure [dbo].[procImportIMP]    Script Date: 2017-04-27 5:28:22 PM ******/
+/****** Object:  StoredProcedure [dbo].[procImportIMP]    Script Date: 2017-06-06 12:13:32 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -36,7 +36,7 @@ BEGIN
 			I.ImportStatus = 1
 		From 
 		TB_IMP_HISTORICO_COTACAO I (nolock) 
-		Inner join TB_ExtId_Map A (nolock) on I.EXT_ID=A.EXT_ID
+		Inner join TB_ExtId_Map A (nolock) on I.EXT_ID=A.Ext_Id
 
 		-- Determino Quais ativos serao atualizados
 		UPDATE I
@@ -101,7 +101,7 @@ BEGIN
 
 			select @atualizados = count(0) from TB_IMP_HISTORICO_COTACAO where UpdateStatus = 1
 			select @inseridos = count(0) from TB_IMP_HISTORICO_COTACAO where ImportStatus = 1
-			select @excluidos = count(0) from TB_IMP_HISTORICO_COTACAO where ImportStatus = 0 and UpdateStatus = 0
+			select @excluidos = count(0) from TB_IMP_HISTORICO_COTACAO where ImportStatus = 0
 
 			declare @log_date Datetime, @log_utcdate Datetime, @log_level nvarchar(50), @logger nvarchar(255), @log_message nvarchar(4000)
 

@@ -26,6 +26,13 @@ namespace Tebaldi.FeedImport.Business
             return handler.GetQueue();
         }
 
+
+        public void Save(List<Tebaldi.MarketData.Models.State.ProcessQueueState> lst)
+        {
+            Tebaldi.MarketData.ImpProcessHandler handler = new MarketData.ImpProcessHandler(ConnectionString);
+            handler.Save(lst);
+        }
+
         public FeedImport.Business.GenericProcess LoadImportProcess(Tebaldi.MarketData.Models.State.ProcessQueueState queue)
         {
             FeedImport.Business.GenericProcess processo = null;
@@ -34,10 +41,10 @@ namespace Tebaldi.FeedImport.Business
 
             switch (feed.Type)
             {
-                case Tebaldi.MarketData.Models.State.FeedTypeEnum.Csv:
-                    Console.WriteLine("Case 1");
-                    break;
-                case Tebaldi.MarketData.Models.State.FeedTypeEnum.BDI:
+                //case Tebaldi.MarketData.Models.State.FeedTypeEnum.Csv:
+                //    Console.WriteLine("Case 1");
+                //    break;
+                case Tebaldi.MarketData.Models.State.FeedTypeStateEnum.BDI:
                     processo = new BdiImportProcess(queue);
                     break;
                 default:
@@ -47,14 +54,13 @@ namespace Tebaldi.FeedImport.Business
 
             processo.QueueInfo = queue;
             processo.Feed = feed;
-            processo.KeyValues = handler.GetKeyValuesById(queue.FeedId);
-            processo.TransformationInfo = handler.GetTransformationByFeedId(queue.FeedId);
-            processo.Feedfilter = handler.GetFilterByFeedId(queue.FeedId);
+            processo.KeyValues = handler.GetFeedKeyValues   (queue.FeedId);
+            processo.TransformationInfo = handler.GetFeedTransformations (queue.FeedId);
+            processo.Feedfilter = handler.GetFeedFilters(queue.FeedId);
 
             return processo;
         }
-
-
+        
         internal void WriteDataToDatabase(DataTable table)
         {
             try

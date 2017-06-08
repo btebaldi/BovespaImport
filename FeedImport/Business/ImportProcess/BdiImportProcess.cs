@@ -72,7 +72,7 @@ namespace Tebaldi.FeedImport.Business
                 System.Net.HttpWebResponse errorResponse = ex.Response as System.Net.HttpWebResponse;
                 if (errorResponse.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    logger.Info("QueueId:" + this.QueueInfo.QueueId.ToString() + "Erro no download do arquivo BDI Status Code: " + ex.Message);
+                    logger.Info("QueueId: " + this.QueueInfo.QueueId.ToString() + " - Erro no download do arquivo BDI Status Code: " + ex.Message);
                     throw new Exceptions.DownloadError404Exception();
                 }
                 else
