@@ -66,7 +66,7 @@ namespace Tebaldi.FeedImport
             handler.Save(lstQueue);
 
             logger.Info("Fim de processo");
-            log4net.LogManager.Flush(15000);
+            log4net.LogManager.Flush(60000);
         }
     }
 }
