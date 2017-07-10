@@ -3,6 +3,18 @@
   <Items>
     <LogicalFolder Name="Connections" Type="2" Sorted="true">
       <Items>
+        <ConnectionNode Name="tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com,1433:btebaldi">
+          <Created>2017-06-29T12:18:43.7894929-03:00</Created>
+          <Type>SQL</Type>
+          <Server>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com,1433</Server>
+          <UserName>btebaldi</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
         <ConnectionNode Name="tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:btebaldi">
           <Created>2017-05-02T11:49:21.2167284-03:00</Created>
           <Type>SQL</Type>
@@ -86,8 +98,8 @@
           <FullPath>procGetKeyValueById.sql</FullPath>
         </FileNode>
         <FileNode Name="procGetProcessQueue.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com,1433:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com,1433</AssociatedConnSrvName>
           <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
           <FullPath>procGetProcessQueue.sql</FullPath>
         </FileNode>
@@ -199,9 +211,15 @@
           <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
           <FullPath>TB_LOG.sql</FullPath>
         </FileNode>
+        <FileNode Name="TB_Process.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com,1433:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <FullPath>TB_Process.sql</FullPath>
+        </FileNode>
         <FileNode Name="TB_ProcessQueue.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com,1433:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com,1433</AssociatedConnSrvName>
           <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
           <FullPath>TB_ProcessQueue.sql</FullPath>
         </FileNode>

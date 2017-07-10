@@ -18,7 +18,7 @@ GO
 -- Create date: 2017-05-03
 -- Description:	Busca Process Queue
 -- =============================================
-CREATE PROCEDURE procGetProcessQueue 
+alter PROCEDURE procGetProcessQueue 
 	
 	
 AS
@@ -27,7 +27,14 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
+	declare @hoje as date
+	set @hoje = getdate()
+
     -- Insert statements for procedure here
-	SELECT * from TB_ProcessQueue where Executado = 0
+	SELECT Q.QueueId, Q.ProcessId, Q.DtExecucao, Q.DtReferencia, Q.Executado, Q.Success from TB_ProcessQueue Q
+	Inner Join TB_Process P on P.ProcessId = Q.ProcessId
+	where Q.Executado = 0
+	and Q.DtExecucao <= @hoje
+	and P.InUse = 1
 END
 GO

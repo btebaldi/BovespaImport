@@ -14,9 +14,9 @@ GO
 
 CREATE TABLE [dbo].[TB_ProcessQueue](
 	[QueueId]			int IDENTITY(1,1) NOT NULL,
-	[FeedId]			int NOT NULL,
+	[ProcessId]			int NOT NULL,
 	[DtExecucao]		datetime NOT NULL,
-	[DtReferencia]		datetime NULL,
+	[DtReferencia]		date NULL,
 	[Executado]			bit NOT NULL,
 	[Success]			bit NOT NULL,
 
