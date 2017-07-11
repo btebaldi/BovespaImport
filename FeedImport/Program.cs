@@ -18,51 +18,59 @@ namespace Tebaldi.FeedImport
             logger.Info("Inicio de processo");
 
             // Inicializo o handler dos processos
-            Tebaldi.FeedImport.Business.ProcessHandler handler = new Business.ProcessHandler();
+            Tebaldi.FeedImport.Business.QueueHandler handler = new Business.QueueHandler();
 
             // busco lista de processos em fila
             List<Tebaldi.MarketData.Models.State.ProcessQueueState> lstQueue = handler.GetProcessQueue();
+            List<Tebaldi.MarketData.Models.State.ProcessQueueState> lstNewQueue = new List<MarketData.Models.State.ProcessQueueState>();
 
             foreach (Tebaldi.MarketData.Models.State.ProcessQueueState item in lstQueue)
             {
-                FeedImport.Business.GenericProcess impPorcess = handler.LoadImportProcess(item);
-
                 item.DataExecucao = DateTime.Now;
                 item.Executado = true;
-                try
+                item.Success = false;
+
+                if (item.Process.Active)
                 {
-                    // Carego as configuracoes de importacao
-                    impPorcess.LoadConfig();
 
-                    // executo o feed de importacao
-                    impPorcess.ExecuteFeed();
+                    FeedImport.Business.GenericProcess impPorcess = handler.CreateImport(item);
 
-                    // executo filtros de importacao
-                    impPorcess.ExecuteFilter();
+                    try
+                    {
+                        // Carego as configuracoes de importacao
+                        impPorcess.LoadConfig();
 
-                    impPorcess.ExecuteTransformations();
+                        // executo o feed de importacao
+                        impPorcess.ExecuteFeed();
 
-                    handler.WriteDataToDatabase(impPorcess.GetData());
+                        // executo filtros de importacao
+                        impPorcess.ExecuteFilter();
 
-                    item.Success = true;
+                        impPorcess.ExecuteTransformations();
 
-                    //if (handler.RescheduleOnSuccess)
-                    //{
-                    //    handler.Reschedule(i);
-                    //}
+                        Business.CotacaoDataHandler.WriteDataToDatabase(impPorcess.GetData());
 
-                }
-                catch (Exceptions.DownloadError404Exception ex)
-                {
-                    item.Success = false;
-                    logger.Warn(ex.Message);
-                }
-                catch (Exception ex)
-                {
-                    item.Success = false;
-                    logger.Error(ex.Message);
+                        item.Success = true;
+
+                        if (item.Process.AutoQueue)
+                        {
+                            lstNewQueue.Add(handler.ReQueue(item));
+                        }
+
+                    }
+                    catch (Exceptions.DownloadError404Exception ex)
+                    {
+                        logger.Warn(ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.Message);
+                    }
                 }
             }
+
+            lstQueue.AddRange(lstNewQueue);
+
             handler.Save(lstQueue);
 
             logger.Info("Fim de processo");

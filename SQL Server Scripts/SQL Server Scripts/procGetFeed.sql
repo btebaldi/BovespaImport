@@ -27,7 +27,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT FeedId, Name, FeedTypeId, Active from TB_Feed where (FeedId = @FeedId or @FeedId is null)
+	SELECT FeedId, Name, FeedTypeId from TB_Feed where (FeedId = @FeedId or @FeedId is null)
 END
 
 GO

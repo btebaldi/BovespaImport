@@ -32,21 +32,19 @@ BEGIN
 		[NodeId]			int not null unique,
 		[FeedId]			int not null,
 		[Name]				nvarchar(100) not null,
-		[FeedTypeId]		int not null,
-		[Active]			bit not null
+		[FeedTypeId]		int not null
 		)
 
 
-	INSERT INTO @TB_IMP_FEED ([NodeId], [FeedId], [Name], [FeedTypeId], [Active])
-	SELECT [NodeId], [FeedId], [Name], [FeedTypeId], [Active]
+	INSERT INTO @TB_IMP_FEED ([NodeId], [FeedId], [Name], [FeedTypeId])
+	SELECT [NodeId], [FeedId], [Name], [FeedTypeId]
 	FROM 
 		OPENXML (@idoc, '/ROOT/FeedInfo', 1)
 			with (
 				[NodeId]	int,
 				[FeedId]	int,
 				[Name]		nvarchar(100),
-				[FeedTypeId]	int,
-				[Active]	bit
+				[FeedTypeId]	int
 				) x 
 
 	EXEC sp_xml_removedocument @idoc; 
@@ -55,8 +53,7 @@ BEGIN
 	UPDATE F SET
 		/* CAMPOS DESLIGADOS. SAO ATUALIZADOS APENAS NO CADASTRO MANUAL */
 		F.[Name] = ImF.[Name],
-		F.[FeedTypeId] = ImF.[FeedTypeId],
-		F.[Active] = ImF.[Active]
+		F.[FeedTypeId] = ImF.[FeedTypeId]
 	FROM
 		@TB_IMP_FEED ImF
 		Inner Join TB_FEED F on F.FeedId = ImF.FeedId
@@ -68,12 +65,11 @@ BEGIN
 	insert into @WorkedIds select FeedId from @TB_IMP_FEED where FeedId<>0
 
 
-	INSERT INTO TB_FEED ([Name], [FeedTypeId], [Active])
+	INSERT INTO TB_FEED ([Name], [FeedTypeId])
 	OUTPUT INSERTED.FeedId INTO @WorkedIds
 	SELECT 
 		[Name],
-		[FeedTypeId],
-		[Active]
+		[FeedTypeId]
 	FROM
 		@TB_IMP_FEED 
 	WHERE

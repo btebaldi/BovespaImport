@@ -16,11 +16,11 @@ GO
 -- =============================================
 -- Author:		Bruno
 -- Create date: 2017-05-03
--- Description:	Busca Processo Importacao
+-- Description:	Busca Process Queue
 -- =============================================
-CREATE PROCEDURE procGetFeed
-	-- Add the parameters for the stored procedure here
-	@FeedId int = null
+CREATE PROCEDURE procGetProcess
+-- Add the parameters for the stored procedure here
+	@Id int = NULL  -- NULL default value
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -28,6 +28,8 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT FeedId, Name, FeedType, Active from TB_Feed where (FeedId = @FeedId or @FeedId is null)
+	SELECT ProcessId, Name, FeedId, AutoQueue, InUse from TB_ImportProcess 
+	Where 
+	((ProcessId = @Id) OR (@Id is null))
 END
 GO

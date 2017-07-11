@@ -17,7 +17,6 @@ CREATE TABLE [dbo].[TB_Feed](
 	[FeedId] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](50) NOT NULL,
 	[FeedTypeId] [int] NOT NULL,
-	[Active] [bit] NOT NULL,
  CONSTRAINT [PK_feed] PRIMARY KEY CLUSTERED 
 (
 	[FeedId] ASC

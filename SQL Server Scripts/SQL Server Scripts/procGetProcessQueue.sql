@@ -31,10 +31,25 @@ BEGIN
 	set @hoje = getdate()
 
     -- Insert statements for procedure here
-	SELECT Q.QueueId, Q.ProcessId, Q.DtExecucao, Q.DtReferencia, Q.Executado, Q.Success from TB_ProcessQueue Q
-	Inner Join TB_Process P on P.ProcessId = Q.ProcessId
-	where Q.Executado = 0
-	and Q.DtExecucao <= @hoje
-	and P.InUse = 1
+	SELECT 
+		Q.QueueId, 
+		Q.ProcessId, 
+		Q.DtAgendada,
+		Q.DtExecucao,
+		Q.DtReferencia, 
+		Q.Executado, 
+		Q.Success,
+
+		P.Name as "TB_ImportProcess.Name",
+		P.FeedId as "TB_ImportProcess.FeedId",
+		P.AutoQueue as "TB_ImportProcess.AutoQueue",
+		P.Active as "TB_ImportProcess.Active"
+	FROM 
+		TB_ProcessQueue Q
+		Inner Join TB_ImportProcess P on P.ProcessId = Q.ProcessId
+	where 
+	Q.Executado = 0
+	AND Q.DtAgendada <= @hoje
+	AND P.Active = 1
 END
 GO

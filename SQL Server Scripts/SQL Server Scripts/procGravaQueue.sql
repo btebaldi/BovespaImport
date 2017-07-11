@@ -30,23 +30,25 @@ BEGIN
 		(
 		NodeId			int not null unique,
 		QueueId			int not null,
-		FeedId			int not null,
-		DtExecucao		DateTime not null,
+		ProcessId		int not null,
+		DtExecucao		DateTime null,
+		DtAgendada		DateTime not null,
 		DtReferencia	DateTime not null,
 		Executado		bit not null,
 		Success			bit not null
 		)
 
 
-	INSERT INTO @TB_Queue (NodeId, QueueId, FeedId, DtExecucao, DtReferencia, Executado, Success)
-	SELECT NodeId, QueueId, FeedId, DtExecucao, DtReferencia, Executado, Success
+	INSERT INTO @TB_Queue (NodeId, QueueId, ProcessId, DtAgendada, DtExecucao, DtReferencia, Executado, Success)
+	SELECT NodeId, QueueId, ProcessId, DtAgendada, DtExecucao, DtReferencia, Executado, Success
 	FROM 
 		OPENXML (@idoc, '/ROOT/Queue', 1)
 			with (
 					NodeId			int,
 					QueueId			int,
-					FeedId			int,
+					ProcessId		int,
 					DtExecucao		DateTime,
+					DtAgendada		DateTime,
 					DtReferencia	DateTime,
 					Executado		bit,
 					Success			bit
@@ -59,6 +61,7 @@ BEGIN
 		/* CAMPOS DESLIGADOS. SAO ATUALIZADOS APENAS NO CADASTRO MANUAL */
 		Q.DtExecucao = I.DtExecucao,
 		Q.DtReferencia = I.DtReferencia,
+		Q.DtAgendada = I.DtAgendada,
 		Q.Executado = I.Executado,
 		Q.Success = I.Success
 	FROM
@@ -66,10 +69,11 @@ BEGIN
 		Inner Join TB_ProcessQueue Q on I.QueueId = Q.QueueId
 
 -- Adiciono novos mapeamentos que tem Id=0
-	INSERT INTO TB_ProcessQueue (FeedId, DtExecucao, DtReferencia, Executado, Success)
+	INSERT INTO TB_ProcessQueue (ProcessId, DtExecucao, DtAgendada, DtReferencia, Executado, Success)
 	SELECT 
-		FeedId,
+		ProcessId,
 		DtExecucao,
+		DtAgendada,
 		DtReferencia,
 		Executado,
 		Success

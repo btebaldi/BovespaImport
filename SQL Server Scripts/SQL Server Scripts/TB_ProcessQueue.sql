@@ -15,8 +15,9 @@ GO
 CREATE TABLE [dbo].[TB_ProcessQueue](
 	[QueueId]			int IDENTITY(1,1) NOT NULL,
 	[ProcessId]			int NOT NULL,
-	[DtExecucao]		datetime NOT NULL,
-	[DtReferencia]		date NULL,
+	[DtAgendada]		datetime NOT NULL,
+	[DtExecucao]		datetime NULL,
+	[DtReferencia]		date NOT NULL,
 	[Executado]			bit NOT NULL,
 	[Success]			bit NOT NULL,
 
@@ -27,5 +28,4 @@ CREATE TABLE [dbo].[TB_ProcessQueue](
 ) ON [PRIMARY]
 
 GO
-
 

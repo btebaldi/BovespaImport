@@ -51,13 +51,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\DataHandler.cs" />
     <Compile Include="Exceptions\TransformationsNotLoaded.cs" />
     <Compile Include="Exceptions\KeyValuesNotLoaded.cs" />
     <Compile Include="Business\ImportProcess\BdiImportProcess.cs" />
     <Compile Include="Exceptions\DownloadError404Exception.cs" />
     <Compile Include="Business\ImportProcess\GenericProcess.cs" />
     <Compile Include="Exceptions\FeedImportException.cs" />
-    <Compile Include="Business\ProcessHandler.cs" />
+    <Compile Include="Business\QueueHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -68,6 +69,7 @@
     <None Include="Log4Net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\ConfigCommon\ConfigCommon.csproj">
@@ -83,7 +85,9 @@
       <Name>TebaldiMarketData</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

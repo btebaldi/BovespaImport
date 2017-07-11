@@ -23,30 +23,30 @@ namespace Tebaldi.FeedImport.Business
 
         public override void LoadConfig()
         {
-            if (base.KeyValues == null)
+            if (Queue.Process.Feed.KeyValues == null)
             { throw new Exceptions.KeyValuesNotLoaded("Key Values nao carregados"); }
 
             ValidadeKeyValue();
 
-            string siteAddress = GetValue("SiteAddress");
-            string fileMask = GetValue("FileMask");
-            string saveDownloadAs = GetValue("SaveDownloadAs");
+            string siteAddress = Queue.Process.Feed.GetValue("SiteAddress");
+            string fileMask = Queue.Process.Feed.GetValue("FileMask");
+            string saveDownloadAs = Queue.Process.Feed.GetValue("SaveDownloadAs");
 
             Tebaldi.BdiFeed.SourceFileInfo sourceFileInfo = new Tebaldi.BdiFeed.SourceFileInfo(
                 siteAddress,
-                ParseDateTimeMask(fileMask, QueueInfo.DataReferencia),
-            CreateFileInfo(ParseDateTimeMask(saveDownloadAs, QueueInfo.DataReferencia)));
+                ParseDateTimeMask(fileMask, Queue.DataReferencia),
+            CreateFileInfo(ParseDateTimeMask(saveDownloadAs, Queue.DataReferencia)));
 
 
-            string extractAs = GetValue("ExtractAs");
-            string searchInZip = GetValue("SearchInZip");
+            string extractAs = Queue.Process.Feed.GetValue("ExtractAs");
+            string searchInZip = Queue.Process.Feed.GetValue("SearchInZip");
 
             Tebaldi.BdiFeed.CompressedFileInfo compressInfo = new Tebaldi.BdiFeed.CompressedFileInfo();
-            compressInfo.ExtracfileAs = CreateFileInfo(ParseDateTimeMask(extractAs, QueueInfo.DataReferencia));
+            compressInfo.ExtracfileAs = CreateFileInfo(ParseDateTimeMask(extractAs, Queue.DataReferencia));
             compressInfo.File = sourceFileInfo.SaveFileAs;
             compressInfo.SearchForFile = searchInZip;
 
-            config = new Tebaldi.BdiFeed.BdiConfig(QueueInfo.DataReferencia, sourceFileInfo, compressInfo);
+            config = new Tebaldi.BdiFeed.BdiConfig(Queue.DataReferencia, sourceFileInfo, compressInfo);
         }
 
         public Tebaldi.BdiFeed.DataClass.State.BdiFileState ImportaBdi()
@@ -72,7 +72,7 @@ namespace Tebaldi.FeedImport.Business
                 System.Net.HttpWebResponse errorResponse = ex.Response as System.Net.HttpWebResponse;
                 if (errorResponse.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    logger.Info("QueueId: " + this.QueueInfo.QueueId.ToString() + " - Erro no download do arquivo BDI Status Code: " + ex.Message);
+                    logger.Info("QueueId: " + this.Queue.QueueId.ToString() + " - Erro no download do arquivo BDI Status Code: " + ex.Message);
                     throw new Exceptions.DownloadError404Exception();
                 }
                 else
@@ -184,11 +184,11 @@ namespace Tebaldi.FeedImport.Business
 
         public override void ExecuteFilter()
         {
-            if (Feedfilter.Count > 0)
+            if (Queue.Process.Feed.Filter.Count > 0)
             {
                 DataTable CleanData = Data.Clone();
 
-                foreach (Tebaldi.MarketData.Models.State.FeedFilterState filter in Feedfilter)
+                foreach (Tebaldi.MarketData.Models.State.FeedFilterState filter in Queue.Process.Feed.Filter)
                 {
                     foreach (DataRow row in Data.Rows)
                     {
@@ -211,19 +211,19 @@ namespace Tebaldi.FeedImport.Business
         private void ValidadeKeyValue()
         {
             string strErrorMessage = "";
-            if (KeyValues.FindIndex(kv => kv.Key == "SiteAddress") < 0)
+            if (Queue.Process.Feed.KeyValues.FindIndex(kv => kv.Key == "SiteAddress") < 0)
             { strErrorMessage = strErrorMessage + "Key \'SiteAddress\' nao encontrada\n"; }
 
-            if (KeyValues.FindIndex(kv => kv.Key == "FileMask") < 0)
+            if (Queue.Process.Feed.KeyValues.FindIndex(kv => kv.Key == "FileMask") < 0)
             { strErrorMessage = strErrorMessage + "Key \'FileMask\' nao encontrada\n"; }
 
-            if (KeyValues.FindIndex(kv => kv.Key == "SaveDownloadAs") < 0)
+            if (Queue.Process.Feed.KeyValues.FindIndex(kv => kv.Key == "SaveDownloadAs") < 0)
             { strErrorMessage = strErrorMessage + "Key \'SaveDownloadAs\' nao encontrada\n"; }
 
-            if (KeyValues.FindIndex(kv => kv.Key == "ExtractAs") < 0)
+            if (Queue.Process.Feed.KeyValues.FindIndex(kv => kv.Key == "ExtractAs") < 0)
             { strErrorMessage = strErrorMessage + "Key \'ExtractAs\' nao encontrada\n"; }
 
-            if (KeyValues.FindIndex(kv => kv.Key == "SearchInZip") < 0)
+            if (Queue.Process.Feed.KeyValues.FindIndex(kv => kv.Key == "SearchInZip") < 0)
             { strErrorMessage = strErrorMessage + "Key \'SearchInZip\' nao encontrada\n"; }
 
             if (!String.IsNullOrEmpty(strErrorMessage))

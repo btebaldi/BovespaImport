@@ -13,15 +13,10 @@ namespace Tebaldi.FeedImport.Business
         #region Properties
 
         protected DirectoryInfo WorkingDir { get; set; }
-        public Tebaldi.MarketData.Models.State.ProcessQueueState QueueInfo { get; set; }
-        public Tebaldi.MarketData.Models.State.FeedState Feed { get; set; }
-        public List<Tebaldi.MarketData.Models.State.KeyValueState> KeyValues { get; set; }
-        public List<Tebaldi.MarketData.Models.State.FeedTransformationState> TransformationInfo { get; set; }
-        public List<Tebaldi.MarketData.Models.State.FeedFilterState> Feedfilter { get; set; }
+        public readonly Tebaldi.MarketData.Models.State.ProcessQueueState Queue;
 
         protected DataTable Data;
-        protected string GetValue(string key)
-        { return KeyValues.Find(c => c.Key == key).Value; }
+
         #endregion
 
         #region abstract Methods
@@ -38,8 +33,9 @@ namespace Tebaldi.FeedImport.Business
         /// <param name="queue"></param>
         public GenericProcess(Tebaldi.MarketData.Models.State.ProcessQueueState queue)
         {
-            QueueInfo = queue;
-            WorkingDir = new DirectoryInfo(".\\Queue_" + QueueInfo.QueueId);
+            Queue = queue;
+
+            WorkingDir = new DirectoryInfo(".\\Queue_" + queue.ToString());
             Data = Tebaldi.MarketData.HistoricoCotacaoHandler.GetDataTable();
         }
 
@@ -48,14 +44,18 @@ namespace Tebaldi.FeedImport.Business
 
         public void ExecuteTransformations()
         {
-            if (TransformationInfo == null)
+
+            //List<Tebaldi.MarketData.Models.State.FeedTransformationState> TransformationInfo = 
+
+
+            if (this.Queue.Process.Feed.Transformations == null)
             { throw new Exceptions.TransformationsNotLoaded("Transformacoes nao carregadas"); }
 
-            if (TransformationInfo.Count > 0)
+            if (this.Queue.Process.Feed.Transformations.Count > 0)
             {
                 foreach (DataRow row in Data.Rows)
                 {
-                    foreach (MarketData.Models.State.FeedTransformationState transform in TransformationInfo.OrderBy(t => t.ExecuteOrder))
+                    foreach (MarketData.Models.State.FeedTransformationState transform in this.Queue.Process.Feed.Transformations.OrderBy(t => t.ExecuteOrder))
                     {
                         if (row[transform.OriginalColumn].Equals(Convert.ChangeType(transform.OriginalValue, Data.Columns[transform.OriginalColumn].DataType)))
                         {

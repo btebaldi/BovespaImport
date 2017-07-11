@@ -1,22 +1,23 @@
 USE [TebaldiMarketData]
 GO
 
-/****** Object:  Table [dbo].[TB_Process]  ******/
-DROP TABLE [dbo].[TB_Process]
+/****** Object:  Table [dbo].[TB_ImportProcess]  ******/
+DROP TABLE [dbo].[TB_ImportProcess]
 GO
 
-/****** Object:  Table [dbo].[TB_Process]  ******/
+/****** Object:  Table [dbo].[TB_ImportProcess]  ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[TB_Process](
+CREATE TABLE [dbo].[TB_ImportProcess](
 	ProcessId		int IDENTITY(1,1) NOT NULL,
+	Name			nvarchar(100) NOT NULL,
 	FeedId			int NOT NULL,
 	AutoQueue		bit NOT NULL,
-	InUse			bit NOT NULL,
+	Active			bit NOT NULL,
 
  CONSTRAINT PK_Process PRIMARY KEY CLUSTERED 
 (
@@ -27,4 +28,4 @@ CREATE TABLE [dbo].[TB_Process](
 GO
 
 
-insert into tb_process (FeedId, AutoQueue, InUse) values(1,1,1)
+insert into TB_ImportProcess (FeedId, Name, AutoQueue, Active) values(1, 'Teste',1,1)
