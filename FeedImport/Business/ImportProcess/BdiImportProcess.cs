@@ -110,7 +110,8 @@ namespace Tebaldi.FeedImport.Business
                     DataRow row = Data.NewRow();
 
                     row["EXT_ID"] = cotacao.Ticker;
-                    row["FeedId"] = "BDI.Cotacao";
+                    row["FeedId"] = Queue.Process.Feed.Name;
+                    //row["FeedId"] = Queue.Process.Feed.ID;
                     row["AtivoId"] = 0;
                     row["DataPregao"] = bdiFile.Header.DataDoPregao;
                     row["NomeResumido"] = cotacao.NomeResumido;

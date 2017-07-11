@@ -27,7 +27,7 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-	declare @hoje as date
+	declare @hoje as datetime
 	set @hoje = getdate()
 
     -- Insert statements for procedure here

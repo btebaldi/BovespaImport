@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\DataHandler.cs" />
+    <Compile Include="Business\ImportProcess\QuandlImportProcess.cs" />
     <Compile Include="Exceptions\TransformationsNotLoaded.cs" />
     <Compile Include="Exceptions\KeyValuesNotLoaded.cs" />
     <Compile Include="Business\ImportProcess\BdiImportProcess.cs" />
@@ -75,6 +76,10 @@
     <ProjectReference Include="..\..\Common\ConfigCommon\ConfigCommon.csproj">
       <Project>{02642c7d-e49c-4f71-a88b-65ba5026885e}</Project>
       <Name>ConfigCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\QuandlCS\QuandlCS\QuandlCS.csproj">
+      <Project>{3839aea2-4391-4d52-9811-e3fb8937eafa}</Project>
+      <Name>QuandlCS</Name>
     </ProjectReference>
     <ProjectReference Include="..\BdiFeed\BdiFeed.csproj">
       <Project>{4ac43b52-6822-40a7-bef1-4fa6400912e6}</Project>

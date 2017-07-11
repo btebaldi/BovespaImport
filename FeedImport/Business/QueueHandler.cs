@@ -33,7 +33,6 @@ namespace Tebaldi.FeedImport.Business
 
             obj.Process = item.Process;
 
-            obj.DataAgendada = item.DataAgendada.AddDays(1);
             if (item.DataReferencia.DayOfWeek == DayOfWeek.Friday)
             {
                 obj.DataReferencia = item.DataReferencia.AddDays(3);
@@ -42,6 +41,10 @@ namespace Tebaldi.FeedImport.Business
             {
                 obj.DataReferencia = item.DataReferencia.AddDays(1);
             }
+
+            if (obj.DataReferencia < DateTime.Today)
+            { obj.DataAgendada = DateTime.Today; }
+            else { obj.DataAgendada = item.DataReferencia.AddDays(1); }
 
             obj.Executado = false;
             obj.Success = false;
