@@ -24,4 +24,9 @@ CREATE TABLE [dbo].[TB_FeedType](
 
 GO
 
+/*
 
+insert into [TB_FeedType] (EnumCode, Descricao) VALUES ('BDI', 'Bovespa arquivo BDI') 
+insert into [TB_FeedType] (EnumCode, Descricao) VALUES ('Quandl', 'Quandl Data') 
+
+*/

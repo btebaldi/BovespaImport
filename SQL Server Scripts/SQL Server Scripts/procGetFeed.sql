@@ -28,6 +28,16 @@ BEGIN
 
     -- Insert statements for procedure here
 	SELECT FeedId, Name, FeedTypeId from TB_Feed where (FeedId = @FeedId or @FeedId is null)
+
+	SELECT KeyValueId, FeedId, Chave, Valor, FeedSpecific FROM TB_FeedKeyValue
+	where (FeedId = @FeedId or @FeedId is null)
+
+	SELECT TransformationId, FeedId, ExecuteOrder, OriginalValue, OriginalColumn, NewValue, NewColumn FROM TB_FeedTransformation
+	where (FeedId = @FeedId or @FeedId is null)
+
+	SELECT Id, FeedId, ColumnName, ColumnValue FROM TB_FeedFilter
+	where (FeedId = @FeedId or @FeedId is null)
+
 END
 
 GO

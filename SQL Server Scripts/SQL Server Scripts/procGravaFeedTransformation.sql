@@ -68,10 +68,10 @@ BEGIN
 		T.[NewColumn] = IT.[NewColumn]
 	FROM
 		@TB_IMP_TRANSFORMATION IT
-		Inner Join TB_FEED_TRANSFORMATION T on T.TransformationId = IT.TransformationId
+		Inner Join TB_FeedTransformation T on T.TransformationId = IT.TransformationId
 
 -- Adiciono novos mapeamentos que tem Id=0
-	INSERT INTO TB_FEED_TRANSFORMATION ([FeedId], [ExecuteOrder], [OriginalValue], [OriginalColumn], [NewValue], [NewColumn])
+	INSERT INTO TB_FeedTransformation ([FeedId], [ExecuteOrder], [OriginalValue], [OriginalColumn], [NewValue], [NewColumn])
 	SELECT 
 		 [FeedId],
 		 [ExecuteOrder],

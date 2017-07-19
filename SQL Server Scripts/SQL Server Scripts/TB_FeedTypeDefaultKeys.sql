@@ -23,3 +23,16 @@ CREATE TABLE [dbo].[TB_FeedTypeDefaultKeys](
 GO
 
 ALTER TABLE TB_FeedTypeDefaultKeys ADD CONSTRAINT FK_FeedTypeDefaulKeys FOREIGN KEY (FeedTypeId) REFERENCES TB_FeedType(FeedTypeId);
+
+
+/*
+Insert into TB_FeedTypeDefaultKeys (FeedTypeId, Chave) VALUES (1, 'SiteAddress')
+Insert into TB_FeedTypeDefaultKeys (FeedTypeId, Chave) VALUES (1, 'FileMask')
+Insert into TB_FeedTypeDefaultKeys (FeedTypeId, Chave) VALUES (1, 'SaveDownloadAs')
+Insert into TB_FeedTypeDefaultKeys (FeedTypeId, Chave) VALUES (1, 'ExtractAs')
+Insert into TB_FeedTypeDefaultKeys (FeedTypeId, Chave) VALUES (1, 'SearchInZip')
+
+Insert into TB_FeedTypeDefaultKeys (FeedTypeId, Chave) VALUES (2, 'DataCode')
+Insert into TB_FeedTypeDefaultKeys (FeedTypeId, Chave) VALUES (2, 'ApiKey')
+Insert into TB_FeedTypeDefaultKeys (FeedTypeId, Chave) VALUES (2, 'ColumnValue')
+*/

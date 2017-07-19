@@ -18,7 +18,8 @@ GO
 -- Create date: 2017-06-08
 -- Description:	
 -- =============================================
-CREATE PROCEDURE procGetFeedTypeDefaultValues
+ALTER PROCEDURE procGetFeedTypeDefaultValues
+	@FeedTypeId int =null
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -27,13 +28,12 @@ BEGIN
 
     -- Insert statements for procedure here
 	select
-		FT.FeedTypeId,
-		FT.EnumCode,
-		FT.Descricao,
 		DV.DefaultKeyId,
 		DV.FeedTypeId,
 		DV.Chave
-	from TB_FeedType FT
-	Inner Join TB_FeedTypeDefaultKeys DV on FT.FeedTypeId = DV.FeedTypeId 
+	from 
+		TB_FeedTypeDefaultKeys DV 
+	where 
+		((DV.FeedTypeId = @FeedTypeId) OR (@FeedTypeId is null))
 END
 GO

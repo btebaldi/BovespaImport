@@ -16,11 +16,11 @@ GO
 -- =============================================
 -- Author:		Bruno
 -- Create date: 2017-05-03
--- Description:	Busca Process Queue
+-- Description:	Busca Logs
 -- =============================================
-alter PROCEDURE procGetProcess
+alter PROCEDURE procGetLogs
 -- Add the parameters for the stored procedure here
-	@Id int = NULL  -- NULL default value
+	@Date Date = NULL  -- NULL default value
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -28,8 +28,13 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT ProcessId, Name, FeedId, AutoQueue, Active from TB_ImportProcess 
+	SELECT
+		top 100 
+		id, log_date, log_utcdate, Log_Level, Logger, log_Message, Exception
+	from
+		TB_Log
 	Where 
-	((ProcessId = @Id) OR (@Id is null))
+	((log_date = @Date) OR (@Date is null))
+	order by log_utcdate desc
 END
 GO

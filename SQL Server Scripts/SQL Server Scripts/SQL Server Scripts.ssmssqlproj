@@ -4,7 +4,7 @@
     <LogicalFolder Name="Connections" Type="2" Sorted="true">
       <Items>
         <ConnectionNode Name="tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com,1433:btebaldi">
-          <Created>2017-06-29T12:18:43.7894929-03:00</Created>
+          <Created>2017-07-14T11:39:16.7422423-03:00</Created>
           <Type>SQL</Type>
           <Server>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com,1433</Server>
           <UserName>btebaldi</UserName>
@@ -21,7 +21,7 @@
           <Server>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</Server>
           <UserName>btebaldi</UserName>
           <Authentication>SQL</Authentication>
-          <InitialDB />
+          <InitialDB>TebaldiMarketData</InitialDB>
           <LoginTimeout>15</LoginTimeout>
           <ExecutionTimeout>0</ExecutionTimeout>
           <ConnectionProtocol>NotSpecified</ConnectionProtocol>
@@ -55,16 +55,22 @@
           <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
           <FullPath>procDeleteKeyValueById.sql</FullPath>
         </FileNode>
+        <FileNode Name="procGetExtIdMap.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>procGetExtIdMap.sql</FullPath>
+        </FileNode>
         <FileNode Name="procGetFeed.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
-          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
           <FullPath>procGetFeed.sql</FullPath>
         </FileNode>
         <FileNode Name="procGetFeedTypeDefaultValues.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
-          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
           <FullPath>procGetFeedTypeDefaultValues.sql</FullPath>
         </FileNode>
         <FileNode Name="procGetFilter.sql">
@@ -79,12 +85,6 @@
           <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
           <FullPath>procGetFilterById.sql</FullPath>
         </FileNode>
-        <FileNode Name="procGetImpProcess.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
-          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
-          <FullPath>procGetImpProcess.sql</FullPath>
-        </FileNode>
         <FileNode Name="procGetKeyValue.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
@@ -96,6 +96,18 @@
           <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
           <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
           <FullPath>procGetKeyValueById.sql</FullPath>
+        </FileNode>
+        <FileNode Name="procGetLogs.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>procGetLogs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="procGetProcess.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>procGetProcess.sql</FullPath>
         </FileNode>
         <FileNode Name="procGetProcessQueue.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com,1433:False:btebaldi</AssociatedConnectionMoniker>
@@ -116,8 +128,8 @@
           <FullPath>procGravaFeedFilter.sql</FullPath>
         </FileNode>
         <FileNode Name="procGravaFeedInfo.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com,1433:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com,1433</AssociatedConnSrvName>
           <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
           <FullPath>procGravaFeedInfo.sql</FullPath>
         </FileNode>
@@ -134,8 +146,8 @@
           <FullPath>procGravaKeyValue.sql</FullPath>
         </FileNode>
         <FileNode Name="procGravaQueue.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com,1433:False:btebaldi</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com,1433</AssociatedConnSrvName>
           <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
           <FullPath>procGravaQueue.sql</FullPath>
         </FileNode>
@@ -158,9 +170,9 @@
           <FullPath>TB_ExtId_Map.sql</FullPath>
         </FileNode>
         <FileNode Name="TB_Feed.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
-          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
           <FullPath>TB_Feed.sql</FullPath>
         </FileNode>
         <FileNode Name="TB_FeedFilter.sql">
@@ -182,15 +194,15 @@
           <FullPath>TB_FeedTransformation.sql</FullPath>
         </FileNode>
         <FileNode Name="TB_FeedType.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
-          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
           <FullPath>TB_FeedType.sql</FullPath>
         </FileNode>
         <FileNode Name="TB_FeedTypeDefaultKeys.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
-          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
           <FullPath>TB_FeedTypeDefaultKeys.sql</FullPath>
         </FileNode>
         <FileNode Name="TB_HISTORICO_COTACAO.sql">
@@ -205,29 +217,23 @@
           <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
           <FullPath>TB_IMP_HISTORICO_COTACAO.sql</FullPath>
         </FileNode>
+        <FileNode Name="TB_ImportProcess.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>TB_ImportProcess.sql</FullPath>
+        </FileNode>
         <FileNode Name="TB_LOG.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
           <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
           <FullPath>TB_LOG.sql</FullPath>
         </FileNode>
-        <FileNode Name="TB_Process.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com,1433:False:btebaldi</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com,1433</AssociatedConnSrvName>
-          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
-          <FullPath>TB_Process.sql</FullPath>
-        </FileNode>
         <FileNode Name="TB_ProcessQueue.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com,1433:False:btebaldi</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com,1433</AssociatedConnSrvName>
-          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
           <FullPath>TB_ProcessQueue.sql</FullPath>
-        </FileNode>
-        <FileNode Name="Temp.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com:False:btebaldi</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>tebaldidb.c083vvcgchn3.us-east-1.rds.amazonaws.com</AssociatedConnSrvName>
-          <AssociatedConnUserName>btebaldi</AssociatedConnUserName>
-          <FullPath>Temp.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>

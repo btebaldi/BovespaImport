@@ -19,16 +19,14 @@ GO
 -- Description:	Busca Process Queue
 -- =============================================
 alter PROCEDURE procGetProcessQueue 
-	
-	
+	@dt_agd_max date = null,
+	@executado bit = null,
+	@activeFeeds bit = null
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
-
-	declare @hoje as datetime
-	set @hoje = getdate()
 
     -- Insert statements for procedure here
 	SELECT 
@@ -47,9 +45,22 @@ BEGIN
 	FROM 
 		TB_ProcessQueue Q
 		Inner Join TB_ImportProcess P on P.ProcessId = Q.ProcessId
-	where 
-	Q.Executado = 0
-	AND Q.DtAgendada <= @hoje
-	AND P.Active = 1
+	where 1=1
+	AND ((Q.Executado = @executado) OR (@executado is null))
+	AND ((Q.DtAgendada <= @dt_agd_max) OR (@dt_agd_max is null))
+	AND ((P.Active = @activeFeeds) OR (@activeFeeds is null))
+	order by 
+		Q.QueueId DESC
+
 END
 GO
+
+
+/*
+
+
+procGetProcessQueue 
+
+procGetProcessQueue @activeFeeds=1, @executado=0
+
+*/

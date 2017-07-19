@@ -14,13 +14,13 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
--- Author:		Bruno
--- Create date: 2017-05-03
--- Description:	Busca Process Queue
+-- Author:		Bruno Tebaldi
+-- Create date: 2017-07-12
+-- Description:	
 -- =============================================
-alter PROCEDURE procGetProcess
--- Add the parameters for the stored procedure here
-	@Id int = NULL  -- NULL default value
+alter PROCEDURE procGetExtIdMap 
+	-- Add the parameters for the stored procedure here
+	@Id int = null
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -28,8 +28,12 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT ProcessId, Name, FeedId, AutoQueue, Active from TB_ImportProcess 
-	Where 
-	((ProcessId = @Id) OR (@Id is null))
+	SELECT 
+		Id, 
+		EXT_ID, 
+		TebaldiBiz_AtivoId 
+	FROM TB_ExtId_Map
+	where
+	((Id = @Id ) OR (@Id is null))
 END
 GO
