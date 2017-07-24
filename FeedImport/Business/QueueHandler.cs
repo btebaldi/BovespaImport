@@ -66,6 +66,10 @@ namespace Tebaldi.FeedImport.Business
                 case Tebaldi.MarketData.Models.State.FeedTypeEnum.BDI:
                     processo = new BdiImportProcess(queue);
                     break;
+
+                case Tebaldi.MarketData.Models.State.FeedTypeEnum.Quandl:
+                    processo = new QuandlImportProcess(queue);
+                    break;
                 default:
                     Console.WriteLine("Default case");
                     break;

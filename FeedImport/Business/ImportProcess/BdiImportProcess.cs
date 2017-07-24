@@ -105,38 +105,32 @@ namespace Tebaldi.FeedImport.Business
         {
             foreach (Tebaldi.BdiFeed.DataClass.State.BdiFile.CotacaoState cotacao in bdiFile.Cotacoes)
             {
-                try
-                {
-                    DataRow row = Data.NewRow();
+                DataRow row = Data.NewRow();
 
-                    row["EXT_ID"] = cotacao.Ticker;
-                    row["FeedId"] = Queue.Process.Feed.Name;
-                    //row["FeedId"] = Queue.Process.Feed.ID;
-                    row["AtivoId"] = 0;
-                    row["DataPregao"] = bdiFile.Header.DataDoPregao;
-                    row["NomeResumido"] = cotacao.NomeResumido;
-                    row["EspecPapel"] = cotacao.EspecificacaoPapel;
-                    row["Ticker"] = cotacao.Ticker;
-                    row["TipoMercado"] = cotacao.TipoDeMercado;
-                    row["PrecoAbertura"] = cotacao.PrecoAbertura;
-                    row["PrecoMaximo"] = cotacao.PrecoMaximo;
-                    row["PrecoMedio"] = cotacao.PrecoMedio;
-                    row["PrecoMinimo"] = cotacao.PrecoMinimo;
-                    row["PrecoFechamento"] = cotacao.PrecoFechamento;
-                    row["Quantidade"] = cotacao.Quantidade;
-                    row["TotalNegocios"] = cotacao.TotalNegocios;
-                    row["Volume"] = cotacao.Volume;
-                    row["ISIN"] = cotacao.CodISIN;
+                row["EXT_ID"] = cotacao.Ticker;
+                row["ProcessId"] = Queue.Process.Id;
+                row["AtivoId"] = 0;
+                row["DataPregao"] = bdiFile.Header.DataDoPregao;
+                row["NomeResumido"] = cotacao.NomeResumido;
+                row["EspecPapel"] = cotacao.EspecificacaoPapel;
+                row["Ticker"] = cotacao.Ticker;
+                row["TipoMercado"] = cotacao.TipoDeMercado;
+                row["PrecoAbertura"] = cotacao.PrecoAbertura;
+                row["PrecoMaximo"] = cotacao.PrecoMaximo;
+                row["PrecoMedio"] = cotacao.PrecoMedio;
+                row["PrecoMinimo"] = cotacao.PrecoMinimo;
+                row["PrecoFechamento"] = cotacao.PrecoFechamento;
+                row["Quantidade"] = cotacao.Quantidade;
+                row["TotalNegocios"] = cotacao.TotalNegocios;
+                row["Volume"] = cotacao.Volume;
+                row["ISIN"] = cotacao.CodISIN;
 
-                    if (cotacao.SinalOscilacao == "+")
-                    { row["Variacao"] = cotacao.Oscilacao / 100; }
-                    else
-                    { row["Variacao"] = -cotacao.Oscilacao / 100; }
+                if (cotacao.SinalOscilacao == "+")
+                { row["Variacao"] = cotacao.Oscilacao / 100; }
+                else
+                { row["Variacao"] = -cotacao.Oscilacao / 100; }
 
-                    Data.Rows.Add(row);
-                }
-                catch (Exception ex)
-                { logger.Error("Registro excluido do processo de importacao.", ex); }
+                Data.Rows.Add(row);
             }
         }
 
@@ -144,64 +138,38 @@ namespace Tebaldi.FeedImport.Business
         {
             foreach (Tebaldi.BdiFeed.DataClass.State.BdiFile.IndiceState indice in bdiFile.Indices)
             {
-                try
-                {
-                    DataRow row = Data.NewRow();
+                DataRow row = Data.NewRow();
 
-                    row["EXT_ID"] = indice.NomeIndice;
-                    row["FeedId"] = "BDI.Indice";
-                    row["AtivoId"] = 0;
-                    row["DataPregao"] = bdiFile.Header.DataDoPregao;
-                    row["NomeResumido"] = indice.NomeIndice;
-                    row["EspecPapel"] = "INDICE";
-                    row["Ticker"] = indice.NomeIndice;
-                    row["TipoMercado"] = 99;
-                    row["PrecoAbertura"] = indice.IndiceAbertura;
-                    row["PrecoMaximo"] = indice.IndiceMaximo;
-                    row["PrecoMedio"] = indice.IndiceMedia;
-                    row["PrecoMinimo"] = indice.IndiceMinimo;
-                    row["PrecoFechamento"] = indice.IndiceFechamento;
-                    row["Quantidade"] = indice.QtdTitulosNegociadosIndice;
-                    row["TotalNegocios"] = indice.NegociosComAcoesDoIndice;
-                    row["Volume"] = indice.VolumeNegociosDoIndice;
-                    row["ISIN"] = "";
+                row["EXT_ID"] = indice.NomeIndice;
+                row["ProcessId"] = Queue.Process.Id;
+                row["AtivoId"] = 0;
+                row["DataPregao"] = bdiFile.Header.DataDoPregao;
+                row["NomeResumido"] = indice.NomeIndice;
+                row["EspecPapel"] = "INDICE";
+                row["Ticker"] = indice.NomeIndice;
+                row["TipoMercado"] = 99;
+                row["PrecoAbertura"] = indice.IndiceAbertura;
+                row["PrecoMaximo"] = indice.IndiceMaximo;
+                row["PrecoMedio"] = indice.IndiceMedia;
+                row["PrecoMinimo"] = indice.IndiceMinimo;
+                row["PrecoFechamento"] = indice.IndiceFechamento;
+                row["Quantidade"] = indice.QtdTitulosNegociadosIndice;
+                row["TotalNegocios"] = indice.NegociosComAcoesDoIndice;
+                row["Volume"] = indice.VolumeNegociosDoIndice;
+                row["ISIN"] = "";
 
-                    if (indice.OntemSinalEvolucao == "+")
-                    { row["Variacao"] = indice.OntemEvolucaoPercentual; }
-                    else
-                    { row["Variacao"] = -indice.OntemEvolucaoPercentual; }
+                if (indice.OntemSinalEvolucao == "+")
+                { row["Variacao"] = indice.OntemEvolucaoPercentual; }
+                else
+                { row["Variacao"] = -indice.OntemEvolucaoPercentual; }
 
-                    Data.Rows.Add(row);
-                }
-                catch (Exception ex)
-                { logger.Error("Arquivo excluido do processo de importacao.", ex); }
+                Data.Rows.Add(row);
             }
         }
 
         public override void ExecuteFeed()
         {
             BdiToDataTable(ImportaBdi(false));
-        }
-
-        public override void ExecuteFilter()
-        {
-            if (Queue.Process.Feed.Filter.Count > 0)
-            {
-                DataTable CleanData = Data.Clone();
-
-                foreach (Tebaldi.MarketData.Models.State.FeedFilterState filter in Queue.Process.Feed.Filter)
-                {
-                    foreach (DataRow row in Data.Rows)
-                    {
-                        if (row[filter.ColumnName].Equals(Convert.ChangeType(filter.ColumnValue, Data.Columns[filter.ColumnName].DataType)))
-                        {
-                            CleanData.Rows.Add(row.ItemArray);
-                            break;
-                        }
-                    }
-                }
-                Data = CleanData;
-            }
         }
 
         private FileInfo CreateFileInfo(string file)

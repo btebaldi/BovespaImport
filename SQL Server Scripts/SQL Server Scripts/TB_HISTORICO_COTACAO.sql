@@ -15,10 +15,10 @@ GO
 CREATE TABLE [dbo].[TB_HISTORICO_COTACAO](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[AtivoId] [int] NOT NULL,
-	[FeedId] [nvarchar](50) NOT NULL,
+	[ProcessId] [int] NOT NULL,
 	[DataPregao] [date] NOT NULL,
-	[Ticker] [nvarchar](12) NOT NULL,
-	[TipoMercado] [int] NOT NULL,
+	--[Ticker] [nvarchar](12) NOT NULL,
+	--[TipoMercado] [int] NOT NULL,
 	[PrecoAbertura] [decimal](18, 4) NOT NULL,
 	[PrecoMaximo] [decimal](18, 4) NOT NULL,
 	[PrecoMinimo] [decimal](18, 4) NOT NULL,

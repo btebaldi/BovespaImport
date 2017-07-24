@@ -52,9 +52,9 @@ BEGIN
 		-- ATUALIZO AS COTACOES ANTIGAS FORNERCIDOS
 		UPDATE H
 		Set 
-			H.FeedId = I.FeedId,
-			H.Ticker = I.Ticker,
-			H.TipoMercado=I.TipoMercado,
+			H.ProcessId = I.ProcessId,
+			--H.Ticker = I.Ticker,
+			--H.TipoMercado=I.TipoMercado,
 			H.PrecoAbertura = I.PrecoAbertura,
 			H.PrecoMaximo= I.PrecoMaximo,
 			H.PrecoMinimo = I.PrecoMinimo,
@@ -76,12 +76,14 @@ BEGIN
 
 		-- ADICIONO NOVAS COTACOES
 		INSERT INTO TB_HISTORICO_COTACAO
+		(AtivoId, ProcessId, DataPregao, PrecoAbertura, PrecoMaximo, PrecoMinimo, PrecoMedio,
+		 PrecoFechamento, TotalNegocios, Quantidade, Volume, Variacao, DataRegistro)
 		Select 
 			AtivoId,
-			FeedId,
+			ProcessId,
 			DataPregao,
-			Ticker,
-			TipoMercado, 
+			--Ticker,
+			--TipoMercado, 
 			PrecoAbertura, 
 			PrecoMaximo, 
 			PrecoMinimo, 

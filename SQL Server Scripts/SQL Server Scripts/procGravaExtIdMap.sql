@@ -31,18 +31,20 @@ BEGIN
 		NodeId				int not null unique,
 		Id					int not null,
 		EXT_ID				nvarchar(200) not null, 
-		TebaldiBiz_AtivoId	int not null
+		TebaldiBiz_AtivoId	int not null,
+		Ticker				nvarchar(12) not null 
 		)
 	
-	INSERT INTO @TB_ExtIdMap (NodeId,Id, EXT_ID, TebaldiBiz_AtivoId)
-	SELECT NodeId,Id, EXT_ID, TebaldiBiz_AtivoId
+	INSERT INTO @TB_ExtIdMap (NodeId,Id, EXT_ID, TebaldiBiz_AtivoId, Ticker)
+	SELECT NodeId,Id, EXT_ID, TebaldiBiz_AtivoId, Ticker
 	FROM 
 		OPENXML (@idoc, '/ROOT/ExtIdMap', 1)
 			with (
 					NodeId				int,
 					Id					int,
 					EXT_ID				nvarchar(200), 
-					TebaldiBiz_AtivoId	int
+					TebaldiBiz_AtivoId	int,
+					Ticker				int
 				) x 
 
 	EXEC sp_xml_removedocument @idoc; 
@@ -51,16 +53,18 @@ BEGIN
 	UPDATE A SET
 		/* CAMPOS DESLIGADOS. SAO ATUALIZADOS APENAS NO CADASTRO MANUAL */
 		A.EXT_ID = I.EXT_ID,
-		A.TebaldiBiz_AtivoId = I.TebaldiBiz_AtivoId
+		A.TebaldiBiz_AtivoId = I.TebaldiBiz_AtivoId,
+		A.Ticker = I.Ticker
 	FROM
 		@TB_ExtIdMap I
 		Inner Join tb_ExtId_Map A on I.Id = A.Id
 
 -- Adiciono novos mapeamentos que tem Id=0
-	INSERT INTO tb_ExtId_Map (EXT_ID, TebaldiBiz_AtivoId)
+	INSERT INTO tb_ExtId_Map (EXT_ID, TebaldiBiz_AtivoId, Ticker)
 	SELECT 
 		EXT_ID,
-		TebaldiBiz_AtivoId
+		TebaldiBiz_AtivoId,
+		Ticker
 	FROM
 		@TB_ExtIdMap 
 	WHERE

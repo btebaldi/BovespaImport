@@ -15,7 +15,7 @@ GO
 CREATE TABLE [dbo].[TB_IMP_HISTORICO_COTACAO](
 	[EXT_ID] [nvarchar](50) NOT NULL,
 	[AtivoId] [int] NULL,
-	[FeedId] [nvarchar](50) NULL,
+	[ProcessId] [int] NULL,
 	[DataPregao] [date] NULL,
 	[Ticker] [nvarchar](12) NULL,
 	[TipoMercado] [int] NULL,

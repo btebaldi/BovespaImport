@@ -23,7 +23,28 @@ namespace Tebaldi.FeedImport.Business
 
         public abstract void LoadConfig();
         public abstract void ExecuteFeed();
-        public abstract void ExecuteFilter();
+        
+
+        public virtual void ExecuteFilter()
+        {
+            if (Queue.Process.Feed.Filter.Count > 0)
+            {
+                DataTable CleanData = Data.Clone();
+
+                foreach (Tebaldi.MarketData.Models.State.FeedFilterState filter in Queue.Process.Feed.Filter)
+                {
+                    foreach (DataRow row in Data.Rows)
+                    {
+                        if (row[filter.ColumnName].Equals(Convert.ChangeType(filter.ColumnValue, Data.Columns[filter.ColumnName].DataType)))
+                        {
+                            CleanData.Rows.Add(row.ItemArray);
+                            break;
+                        }
+                    }
+                }
+                Data = CleanData;
+            }
+        }
 
         #endregion
 

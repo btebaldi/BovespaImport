@@ -31,7 +31,8 @@ BEGIN
 	SELECT 
 		Id, 
 		EXT_ID, 
-		TebaldiBiz_AtivoId 
+		TebaldiBiz_AtivoId,
+		Ticker
 	FROM TB_ExtId_Map
 	where
 	((Id = @Id ) OR (@Id is null))

@@ -28,4 +28,3 @@ CREATE TABLE [dbo].[TB_ImportProcess](
 GO
 
 
-insert into TB_ImportProcess (FeedId, Name, AutoQueue, Active) values(1, 'Teste',1,1)

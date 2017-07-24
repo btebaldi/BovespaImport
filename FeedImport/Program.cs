@@ -26,6 +26,9 @@ namespace Tebaldi.FeedImport
 
             foreach (Tebaldi.MarketData.Models.State.ProcessQueueState item in lstQueue)
             {
+
+                logger.Info("Executando Processo: " + item.Process.Name + " (id: " + item.Process.Id.ToString() + ") Date: " + item.DataReferencia.ToString("s"));
+
                 item.DataExecucao = DateTime.Now;
                 item.Executado = true;
                 item.Success = false;

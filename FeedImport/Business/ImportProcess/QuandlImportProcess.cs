@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tebaldi.Quandl.Business;
 
-namespace Tebaldi.FeedImport.Business.ImportProcess
+namespace Tebaldi.FeedImport.Business
 {
     class QuandlImportProcess : GenericProcess
     {
@@ -68,40 +68,29 @@ namespace Tebaldi.FeedImport.Business.ImportProcess
         {
             foreach (DataRow cotacao in res.Data.Rows)
             {
-                try
-                {
-                    DataRow row = Data.NewRow();
+                DataRow row = Data.NewRow();
 
-                    row["EXT_ID"] = res.Request.Datacode.ToString();
-                    //row["FeedId"] = Queue.Process.Feed.ID;
-                    row["FeedId"] = Queue.Process.Feed.Name;
-                    row["AtivoId"] = 0;
-                    row["DataPregao"] = res.Request.EndDate;
-                    row["NomeResumido"] = res.Request.Datacode.ToString();
-                    row["EspecPapel"] = "";
-                    row["Ticker"] = res.Request.Datacode.ToString('.');
-                    row["TipoMercado"] = 99;
-                    row["PrecoAbertura"] = cotacao[Queue.Process.Feed.GetValue("ColumnValue")];
-                    row["PrecoMaximo"] = cotacao[Queue.Process.Feed.GetValue("ColumnValue")];
-                    row["PrecoMedio"] = cotacao[Queue.Process.Feed.GetValue("ColumnValue")];
-                    row["PrecoMinimo"] = cotacao[Queue.Process.Feed.GetValue("ColumnValue")];
-                    row["PrecoFechamento"] = cotacao[Queue.Process.Feed.GetValue("ColumnValue")];
-                    row["Quantidade"] = 1;
-                    row["TotalNegocios"] = 1;
-                    row["Volume"] = 1;
-                    row["ISIN"] = "";
-                    row["Variacao"] = 0;
+                row["EXT_ID"] = res.Request.Datacode.ToString();
+                row["ProcessId"] = Queue.Process.Id;
+                row["AtivoId"] = 0;
+                row["DataPregao"] = res.Request.EndDate;
+                row["NomeResumido"] = res.Request.Datacode.ToString();
+                row["EspecPapel"] = "";
+                row["Ticker"] = res.Request.Datacode.ToString('.');
+                row["TipoMercado"] = 99;
+                row["PrecoAbertura"] = cotacao[Queue.Process.Feed.GetValue("ColumnValue")];
+                row["PrecoMaximo"] = cotacao[Queue.Process.Feed.GetValue("ColumnValue")];
+                row["PrecoMedio"] = cotacao[Queue.Process.Feed.GetValue("ColumnValue")];
+                row["PrecoMinimo"] = cotacao[Queue.Process.Feed.GetValue("ColumnValue")];
+                row["PrecoFechamento"] = cotacao[Queue.Process.Feed.GetValue("ColumnValue")];
+                row["Quantidade"] = 1;
+                row["TotalNegocios"] = 1;
+                row["Volume"] = 1;
+                row["ISIN"] = "";
+                row["Variacao"] = 0;
 
-                    Data.Rows.Add(row);
-                }
-                catch (Exception ex)
-                { logger.Error("Registro excluido do processo de importacao.", ex); }
+                Data.Rows.Add(row);
             }
-        }
-
-        public override void ExecuteFilter()
-        {
-
         }
 
         private void ValidadeKeyValue()

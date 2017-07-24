@@ -16,6 +16,7 @@ CREATE TABLE [dbo].[TB_ExtId_Map](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[EXT_ID] [nvarchar](100) NOT NULL,
 	[TebaldiBiz_AtivoId] [int] NOT NULL,
+	[Ticker] [nvarchar](12) NOT NULL,
  CONSTRAINT [PK_TB_ExtId_Map] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -28,10 +29,10 @@ CREATE TABLE [dbo].[TB_ExtId_Map](
 
 GO
 
-
+/*
 -- CARGA INICIAL
-INSERT INTO TB_ExtId_Map (Ext_ID, TebaldiBiz_AtivoId) VALUES ('BVSP.IBOVESPA', 0)
-INSERT INTO TB_ExtId_Map (Ext_ID, TebaldiBiz_AtivoId) VALUES ('BVSP.GFSA3', 0)
+INSERT INTO TB_ExtId_Map (Ext_ID, TebaldiBiz_AtivoId) VALUES ('BVSP.IBOVESPA', 0, 'IBOV')
+INSERT INTO TB_ExtId_Map (Ext_ID, TebaldiBiz_AtivoId) VALUES ('BVSP.GFSA3', 0, 'GFSA3')
 INSERT INTO TB_ExtId_Map (Ext_ID, TebaldiBiz_AtivoId) VALUES ('BVSP.ALPA4', 0)
 INSERT INTO TB_ExtId_Map (Ext_ID, TebaldiBiz_AtivoId) VALUES ('BVSP.ABEV3', 0)
 INSERT INTO TB_ExtId_Map (Ext_ID, TebaldiBiz_AtivoId) VALUES ('BVSP.BTOW3', 0)
@@ -110,3 +111,5 @@ INSERT INTO TB_ExtId_Map (Ext_ID, TebaldiBiz_AtivoId) VALUES ('BVSP.WSON33', 0)
 INSERT INTO TB_ExtId_Map (Ext_ID, TebaldiBiz_AtivoId) VALUES ('BVSP.WEGE3', 0)
 INSERT INTO TB_ExtId_Map (Ext_ID, TebaldiBiz_AtivoId) VALUES ('BVSP.BVMF3', 0)
 INSERT INTO TB_ExtId_Map (Ext_ID, TebaldiBiz_AtivoId) VALUES ('BVSP.GPIV33', 0)
+
+*/
