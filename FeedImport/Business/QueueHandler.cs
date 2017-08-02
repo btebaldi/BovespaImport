@@ -44,7 +44,7 @@ namespace Tebaldi.FeedImport.Business
 
             if (obj.DataReferencia < DateTime.Today)
             { obj.DataAgendada = DateTime.Today; }
-            else { obj.DataAgendada = item.DataReferencia.AddDays(1); }
+            else { obj.DataAgendada = obj.DataReferencia.AddDays(1); }
 
             obj.Executado = false;
             obj.Success = false;

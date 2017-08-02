@@ -58,8 +58,8 @@ GO
 
 /*
 
-
-procGetProcessQueue 
+select getdate()
+procGetProcessQueue '2017-08-02', false, true
 
 procGetProcessQueue @activeFeeds=1, @executado=0
 
