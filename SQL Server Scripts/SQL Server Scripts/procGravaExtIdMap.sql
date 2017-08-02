@@ -30,7 +30,7 @@ BEGIN
 		(
 		NodeId				int not null unique,
 		Id					int not null,
-		EXT_ID				nvarchar(200) not null, 
+		EXT_ID				nvarchar(100) not null, 
 		TebaldiBiz_AtivoId	int not null,
 		Ticker				nvarchar(12) not null 
 		)
@@ -42,9 +42,9 @@ BEGIN
 			with (
 					NodeId				int,
 					Id					int,
-					EXT_ID				nvarchar(200), 
+					EXT_ID				nvarchar(100), 
 					TebaldiBiz_AtivoId	int,
-					Ticker				int
+					Ticker				nvarchar(12)
 				) x 
 
 	EXEC sp_xml_removedocument @idoc; 
